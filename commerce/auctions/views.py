@@ -8,7 +8,12 @@ from auctions.models import *
 
 
 def index(request):
-    return render(request, "auctions/index.html")
+
+    list_view = Auction.objects.all()
+
+    return render(request, "auctions/index.html", {
+        'list_view':list_view
+    })
 
 
 def login_view(request):
@@ -80,3 +85,9 @@ def newauction(request):
     else:
 
         return render(request, 'auctions/new_auction.html')
+
+def view_auction(request, item_title):
+
+    title = item_title
+
+    return render(request, 'auctions/view.html', {  'title':item_title  })
