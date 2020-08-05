@@ -14,6 +14,10 @@ class Auction(models.Model):
         MINIMALISM = 4
         STREET_ART = 5
 
+    class StatusOptions(models.IntegerChoices):
+        OFF = 0
+        ON = 1
+
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     title = models.CharField(max_length=100)
     description = models.TextField()
@@ -21,6 +25,7 @@ class Auction(models.Model):
     init = models.IntegerField()
     url = models.CharField(max_length=1000, blank=True)
     cat = models.IntegerField(choices=CategorieOptions.choices, default=1)
+    status = models.IntegerField(choices=StatusOptions.choices, default=1)
 
     def __str__(self):
         return f"User: {self.user}, Auct Title: {self.title}, Init value: {self.init}, Cat: {self.cat}"

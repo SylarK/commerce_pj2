@@ -8,7 +8,7 @@ Este projeto teve por objetivo a composição da nota no curso proposto pela Har
 
 * [x] **Models**: A aplicação deverá ter no mínimo três models, uma para as **'auctions listings'**, uma para **'bids'** e outra para os **comentários** feitos nas 'auctions listings'.
 
-* [ ] **Create Listing**: O usuário deverá ser capaz de ter acesso a página que possibilita que o mesmo crie uma nova lista. Ele deverá espicificar o título, um texto de descrição e o valor de início do leilão. Opcionalmente o usuário deverá ser capaz de adicionar uma URL de uma imagem e/ou uma categoria.
+* [x] **Create Listing**: O usuário deverá ser capaz de ter acesso a página que possibilita que o mesmo crie uma nova lista. Ele deverá espicificar o título, um texto de descrição e o valor de início do leilão. Opcionalmente o usuário deverá ser capaz de adicionar uma URL de uma imagem e/ou uma categoria.
 
 * [ ] **Active Listings Page**: A rota padrão da aplicação deverá mostrar aos usuários a lista com todos os itens de leilão que estão ativos no momento. Para cada item ativo a página inicial deverá mostrar pelo menos **title, description, current price, and photo (se a mesma existir)**.
 
