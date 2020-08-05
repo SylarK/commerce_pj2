@@ -1,7 +1,14 @@
 {% extends "auctions/layout.html" %}
 
+{% block list %}
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'newauction' %}">New Auction</a>
+    </li>
+{% endblock %}
+
 {% block body %}
     <h2>Active Listings</h2>
+
 
     TODO
 {% endblock %}

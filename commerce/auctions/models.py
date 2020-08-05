@@ -19,8 +19,8 @@ class Auction(models.Model):
     description = models.TextField()
     detail = models.TextField()
     init = models.IntegerField()
-    url = models.CharField(max_length=1000)
-    cat = models.IntegerField(choices=CategorieOptions.choices)
+    url = models.CharField(max_length=1000, blank=True)
+    cat = models.IntegerField(choices=CategorieOptions.choices, default=1)
 
     def __str__(self):
         return f"User: {self.user}, Auct Title: {self.title}, Init value: {self.init}, Cat: {self.cat}"

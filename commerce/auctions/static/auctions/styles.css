@@ -1,3 +1,8 @@
 body {
+    margin: 0;
     padding: 10px;
+}
+
+.marker{
+    border: solid red 2px;
 }

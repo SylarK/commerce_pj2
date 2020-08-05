@@ -6,7 +6,7 @@ Este projeto teve por objetivo a composição da nota no curso proposto pela Har
 
 `` O projeto em questão utiliza Django (Py), HTML, CSS, Sql para apresentar a estrutura de um website que funcionará como uma espécie de site de leilão. A ideia seria mais ou menos do que acontece em plataformas como enjoei.com, desapega.com, olx.com etc só que com uma visão mais para o lado de leilão. Ou seja, o usuário poderá realizar o cadastramento de um item e realizar o leilão de tal item.``
 
-* [ ] **Models**: A aplicação deverá ter no mínimo três models, uma para as **'auctions listings'**, uma para **'bids'** e outra para os **comentários** feitos nas 'auctions listings'.
+* [x] **Models**: A aplicação deverá ter no mínimo três models, uma para as **'auctions listings'**, uma para **'bids'** e outra para os **comentários** feitos nas 'auctions listings'.
 
 * [ ] **Create Listing**: O usuário deverá ser capaz de ter acesso a página que possibilita que o mesmo crie uma nova lista. Ele deverá espicificar o título, um texto de descrição e o valor de início do leilão. Opcionalmente o usuário deverá ser capaz de adicionar uma URL de uma imagem e/ou uma categoria.
 
