@@ -89,18 +89,32 @@ def newauction(request):
 def view_auction(request, item_title):
 
     auction_view = Auction.objects.get(title=item_title)
+    msg = ''
 
     if request.method == 'POST':
 
-        text = request.POST['comment']
-        new_comment = Comment(user=request.user, toauction=auction_view, text=text)
-        new_comment.save()
-        comments = Comment.objects.filter(toauction=auction_view)
-    
-    else:
-        comments = Comment.objects.filter(toauction=auction_view)                                            
-        
+        if request.POST['type-form'] == 'comment':
+            text = request.POST['comment']
+            new_comment = Comment(user=request.user, toauction=auction_view, text=text)
+            new_comment.save()
+            
+        else:
+            bid = request.POST['newbid']
+            #check
+            if check(bid, auction_view.init):
+                newbid = Bid(user=request.user, toauction=auction_view, value=bid)
+                auction_view.init = bid
+                auction_view.save()
+                newbid.save()
+            else:
+                msg = 'Your bid must be greater than a current bid.'
+                                       
+    comments = Comment.objects.filter(toauction=auction_view)
     return render(request, 'auctions/view.html', {
         'auction':auction_view,
-        'comments':comments
+        'comments':comments,
+        'msg':msg
         })
+
+def check(value1, value2):
+    return int(value1) > int(value2)
