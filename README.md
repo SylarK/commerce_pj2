@@ -10,19 +10,19 @@ Este projeto teve por objetivo a composição da nota no curso proposto pela Har
 
 * [x] **Create Listing**: O usuário deverá ser capaz de ter acesso a página que possibilita que o mesmo crie uma nova lista. Ele deverá espicificar o título, um texto de descrição e o valor de início do leilão. Opcionalmente o usuário deverá ser capaz de adicionar uma URL de uma imagem e/ou uma categoria.
 
-* [ ] **Active Listings Page**: A rota padrão da aplicação deverá mostrar aos usuários a lista com todos os itens de leilão que estão ativos no momento. Para cada item ativo a página inicial deverá mostrar pelo menos **title, description, current price, and photo (se a mesma existir)**.
+* [x] **Active Listings Page**: A rota padrão da aplicação deverá mostrar aos usuários a lista com todos os itens de leilão que estão ativos no momento. Para cada item ativo a página inicial deverá mostrar pelo menos **title, description, current price, and photo (se a mesma existir)**.
 
-* [ ] **Listing Page**: Clicando em determinado item o usuário deverá ser direcionado a uma págia em que o mesmo visualizará o item em específico. Nessa página os usuários são capazes de visualizar todos os detalhes do item, incluindo o preço atual do item.
+* [x] **Listing Page**: Clicando em determinado item o usuário deverá ser direcionado a uma página em que o mesmo visualizará o item em específico. Nessa página os usuários são capazes de visualizar todos os detalhes do item, incluindo o preço atual do item.
 
     * [ ] Se o usuário estiver logado, será capaz de adicionar o item ao Watchlist. Se o item já estiver lá ele poderá remove-lo.
 
-    * [ ] Se o usuário estiver logado, poderá ser capaz de realizar um lance (que deverá ser maior do que o valor atual)
+    * [x] Se o usuário estiver logado, poderá ser capaz de realizar um lance (que deverá ser maior do que o valor atual)
 
     * [ ] Se o usuário estiver logado e for o criador do leilão daquele item, poderá realizar o fechamento do leilão, declarando o último lance como ganhador e deixando aquele item indisponível para outras visualizações.
 
     * [ ] Se o usuário vencedor do item específico do leilão for o ganhador e acessar a página, a página deverá notifica-lo.
 
-    * [ ] Usuários que estão logados deverão ser capazes de realizar comentários, e os comentários deverão estar listados no decorrer da página.
+    * [x] Usuários que estão logados deverão ser capazes de realizar comentários, e os comentários deverão estar listados no decorrer da página.
 
 * [ ] **Watchlist**: Usuários que estão logados são capazes de visitar a página de Watchlist que mostrará todos os itens que o usuário adicionou em sua página. Clicando em uma dessas o usuário será redirecionado a esta página.
 

@@ -47,6 +47,9 @@ class Comment(models.Model):
     def __str__(self):
         return f"User: {self.user}, Belong (auction) : {self.toauction}"
 
-
+class WatchList(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    toauction = models.ForeignKey(Auction, on_delete=models.CASCADE)
+    
 
     
