@@ -31,4 +31,23 @@ body {
 .card-body>p{
     text-align: justify;
 }
+
+.view_card{
+
+    width: 100%;
+
+}
+
 /* ID */
+
+#form_bid{
+
+    margin: 2vh;
+
+}
+
+#current_bid{
+    margin-top: -2vh;
+    font-size: 40px;
+    text-shadow: 1px 1px black;
+}

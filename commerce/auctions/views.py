@@ -88,6 +88,8 @@ def newauction(request):
 
 def view_auction(request, item_title):
 
-    title = item_title
+    auction_view = Auction.objects.get(title=item_title)
 
-    return render(request, 'auctions/view.html', {  'title':item_title  })
+    return render(request, 'auctions/view.html', {
+          'auction':auction_view  
+          })
