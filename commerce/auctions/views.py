@@ -90,6 +90,17 @@ def view_auction(request, item_title):
 
     auction_view = Auction.objects.get(title=item_title)
 
+    if request.method == 'POST':
+
+        text = request.POST['comment']
+        new_comment = Comment(user=request.user, toauction=auction_view, text=text)
+        new_comment.save()
+        comments = Comment.objects.filter(toauction=auction_view)
+    
+    else:
+        comments = Comment.objects.filter(toauction=auction_view)                                            
+        
     return render(request, 'auctions/view.html', {
-          'auction':auction_view  
-          })
+        'auction':auction_view,
+        'comments':comments
+        })

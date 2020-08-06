@@ -41,7 +41,8 @@ class Bid(models.Model):
 class Comment(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     toauction = models.ForeignKey(Auction, on_delete=models.CASCADE)
-    text = models.CharField(max_length=1000)
+    text = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return f"User: {self.user}, Belong (auction) : {self.toauction}"

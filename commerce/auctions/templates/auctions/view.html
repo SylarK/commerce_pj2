@@ -33,6 +33,46 @@
 
         </div>
 
+        <div class="content_comments">
+
+            <ul class="list-group list_comment">
+
+                {% if comments %}
+                    {% for com in comments %}
+
+                        <li class="list-group-item">
+                            <span style="font-weight: bold;">{{ com.user }}</span> - <span style="opacity: 0.6;">Created at {{ com.created_at }}</span>
+                        </li>
+                        <li class="list-group-item">{{ com.text }}</li>
+
+                    {% endfor %}
+                {% else %}
+                    
+                    <li class="list-group-item text-muted" id="empty_comment">
+                        We don't have any comments for this work yet.
+                    </li>
+                    
+                {% endif %}
+            </ul>
+
+        </div>
+
+        {% if user.is_authenticated %}
+
+            <form class="form_comment" action="" method="post">
+
+                {% csrf_token %}
+
+                <div class="form-group">
+                    <textarea name="comment" rows="5" class="form-control"></textarea>
+                </div>
+
+                <button class="btn btn-outline-dark btn-sm" type="submit">Comment</button>
+
+            </form>
+
+        {% endif %}
+
     
     </div> 
 
