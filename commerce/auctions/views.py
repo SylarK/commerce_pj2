@@ -148,3 +148,11 @@ def view_watchlist(request):
     return render(request, 'auctions/watchlist.html', {
         'watchlist':watch
     })
+
+def close(request, item_title):
+
+    alt = Auction.objects.get(title=item_title)
+    alt.status = 0
+    alt.save()
+
+    return redirect('index')

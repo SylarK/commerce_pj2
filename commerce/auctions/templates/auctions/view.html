@@ -49,16 +49,21 @@
                         <!-- watchlist -->
                             <div class="watchlist_space">
 
-                                    <div id="watchlist_img" >
+                                    <div id="watchlist_img">
 
                                         {% if watchlist %}
-                                            <a href="{% url 'manwatchlist' auction.title %}"><img src="../../static/img/star_after.svg" alt="">
+                                            <a class="link-watch" href="{% url 'manwatchlist' auction.title %}"><img src="../../static/img/star_after.svg" alt="">
                                                     <span>Added to watchlist</span>
                                             </a>
                                         {% else %}
-                                            <a href="{% url 'manwatchlist' auction.title %}"><img src="../../static/img/star_before.svg" alt="">
+                                            <a class="link-watch" href="{% url 'manwatchlist' auction.title %}"><img src="../../static/img/star_before.svg" alt="">
                                                 <span>Add to watchlist</span>
                                             </a>
+                                        {% endif %}
+                                        {% if request.user == auction.user %}
+                                            <a class="link-watch" href="{% url 'close' auction.title %}"><img src="../../static/img/close_after.svg" alt="">
+                                                <span>Close bid</span>
+                                            </a>                                           
                                         {% endif %}
 
                                     </div>
