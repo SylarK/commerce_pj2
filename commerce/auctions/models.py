@@ -28,7 +28,7 @@ class Auction(models.Model):
     status = models.IntegerField(choices=StatusOptions.choices, default=1)
 
     def __str__(self):
-        return f"User: {self.user}, Auct Title: {self.title}, Init value: {self.init}, Cat: {self.cat}"
+        return f"{self.title}, Init value: {self.init}, Cat: {self.cat}"
 
 class Bid(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
@@ -50,6 +50,9 @@ class Comment(models.Model):
 class WatchList(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     toauction = models.ForeignKey(Auction, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f"{self.user} - {self.toauction}"
     
 
     

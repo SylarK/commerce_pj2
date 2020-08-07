@@ -22,6 +22,8 @@
                 <div id="form_bid">
                     <p><small class="text-muted"><h5>Current Bid</h5></small> </p>
                         <p id="current_bid">${{ auction.init }}</p>
+                    
+                    <!--Form Bid-->
                     <form class="form-inline" action="" method="post">
 
                         {% csrf_token %}
@@ -39,6 +41,24 @@
                             {% endif %}
 
                     </form>
+                    <!-- end Form bid-->
+                </div>
+                <div class="watchlist_space">
+
+                        <div id="watchlist_img" >
+
+                            {% if watchlist %}
+                                <a href="{% url 'manwatchlist' auction.title %}"><img src="../../static/img/star_after.svg" alt="">
+                                        <span>Added to watchlist</span>
+                                </a>
+                            {% else %}
+                                <a href="{% url 'manwatchlist' auction.title %}"><img src="../../static/img/star_before.svg" alt="">
+                                    <span>Add to watchlist</span>
+                                </a>
+                            {% endif %}
+
+                        </div>
+
                 </div>
             </div>
 
@@ -69,7 +89,7 @@
         </div>
 
         {% if user.is_authenticated %}
-
+            <!-- Form comment -->
             <form class="form_comment" action="" method="post">
 
                 {% csrf_token %}
@@ -82,7 +102,7 @@
                 <button class="btn btn-outline-dark btn-sm" type="submit">Comment</button>
 
             </form>
-
+            <!-- end Form comment -->
         {% endif %}
 
     

@@ -72,3 +72,20 @@ body {
     background-image: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%);
 
 }
+
+#watchlist_img>a>img{
+    margin-top: 2vh;
+    margin-bottom: 3vh ;
+    margin-right: 1vh;
+    margin-left: 2vh;
+    width: 25px;
+    height: auto;
+
+}
+
+#watchlist_img>a{
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}
+
