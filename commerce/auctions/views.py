@@ -89,7 +89,6 @@ def newauction(request):
 def view_auction(request, item_title):
 
     auction_view = Auction.objects.get(title=item_title)
-    watchlist = WatchList.objects.filter(user=request.user, toauction=auction_view)
     msg = ''
 
     if request.method == 'POST':
@@ -109,6 +108,13 @@ def view_auction(request, item_title):
                 newbid.save()
             else:
                 msg = 'Your bid must be greater than a current bid.'
+
+    #if user is not logged
+    try: 
+        watchlist = WatchList.objects.filter(user=request.user, toauction=auction_view)
+    except:
+        watchlist = False
+            
                                        
     comments = Comment.objects.filter(toauction=auction_view)
     return render(request, 'auctions/view.html', {
@@ -134,3 +140,11 @@ def man_watchlist(request, item_title):
         watch.save()
 
     return redirect('view', item_title=item_title)
+
+def view_watchlist(request):
+
+    watch = WatchList.objects.filter(user=request.user)
+
+    return render(request, 'auctions/watchlist.html', {
+        'watchlist':watch
+    })

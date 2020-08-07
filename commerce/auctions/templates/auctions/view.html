@@ -19,47 +19,61 @@
                     <p class="card-text">{{ auction.description }}</p>
                     <p class="card-text"><small class="text-muted">{{ auction.detail }}</small></p>
                 </div>
-                <div id="form_bid">
+                <div class="form_bid">
                     <p><small class="text-muted"><h5>Current Bid</h5></small> </p>
                         <p id="current_bid">${{ auction.init }}</p>
-                    
-                    <!--Form Bid-->
-                    <form class="form-inline" action="" method="post">
+                </div>
+                {% if user.is_authenticated %}
+                        <!--Form Bid-->
+                        <div class="form_bid">
+                            <form class="form-inline" action="" method="post">
 
-                        {% csrf_token %}
+                                {% csrf_token %}
 
-                        <div class="form-group mx-sm-3 mb-2">
-                            <input type="hidden" value="bid" name="type-form">
-                            <input type="number" class="form-control" name="newbid" placeholder="$"> 
-                        </div>
-                        <button type="submit" class="btn btn-success mb-2">Register to Bid</button>
-
-                            {% if msg != '' %}
-                                <div class="alert alert-danger" role="alert">
-                                    {{ msg }}
+                                <div class="form-group mx-sm-3 mb-2">
+                                    <input type="hidden" value="bid" name="type-form">
+                                    <input type="number" class="form-control" name="newbid" placeholder="$" required> 
                                 </div>
-                            {% endif %}
+                                <button type="submit" class="btn btn-success mb-2" {% if user.is_anonymous %} disabled {% endif %} >Register to Bid</button>
 
-                    </form>
-                    <!-- end Form bid-->
-                </div>
-                <div class="watchlist_space">
+                                    {% if msg != '' %}
+                                        <div class="alert alert-danger" role="alert">
+                                            {{ msg }}
+                                        </div>
+                                    {% endif %}
 
-                        <div id="watchlist_img" >
-
-                            {% if watchlist %}
-                                <a href="{% url 'manwatchlist' auction.title %}"><img src="../../static/img/star_after.svg" alt="">
-                                        <span>Added to watchlist</span>
-                                </a>
-                            {% else %}
-                                <a href="{% url 'manwatchlist' auction.title %}"><img src="../../static/img/star_before.svg" alt="">
-                                    <span>Add to watchlist</span>
-                                </a>
-                            {% endif %}
-
+                            </form>
                         </div>
+                        <!-- end Form bid-->
 
-                </div>
+                        <!-- watchlist -->
+                            <div class="watchlist_space">
+
+                                    <div id="watchlist_img" >
+
+                                        {% if watchlist %}
+                                            <a href="{% url 'manwatchlist' auction.title %}"><img src="../../static/img/star_after.svg" alt="">
+                                                    <span>Added to watchlist</span>
+                                            </a>
+                                        {% else %}
+                                            <a href="{% url 'manwatchlist' auction.title %}"><img src="../../static/img/star_before.svg" alt="">
+                                                <span>Add to watchlist</span>
+                                            </a>
+                                        {% endif %}
+
+                                    </div>
+
+                            </div>
+                <!-- end watchlist -->
+                {% else %}
+                        
+                    <div class="alert alert-danger" id="alert-danger" role="alert">
+                        
+                        You must be logged in to place bids on the auction or make comments.
+
+                    </div>
+
+                {% endif %}
             </div>
 
         </div>
@@ -107,5 +121,7 @@
 
     
     </div> 
+
+    <script src="../../static/auctions/main.js"></script>
 
 {% endblock %}

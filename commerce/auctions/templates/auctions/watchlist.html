@@ -1,0 +1,34 @@
+{% extends 'auctions/layout.html' %}
+
+{% block title %} Watchlist {% endblock %}
+
+{% block header %} Watch list {% endblock %}
+
+{% block list %}
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'newauction' %}">New Auction</a>
+    </li>
+{% endblock %}
+
+{% block body %}
+    
+    <div class="flex-container" id="flex_container">
+        {% for item in watchlist %}
+        
+            <div class="card" style="width: 15rem;">
+                <h5 class="card-title">{{ item.toauction.title }}</h5>
+                <img src="{{ item.toauction.url }}" class="card-img" alt="...">
+                <div class="card-body">
+                    
+                    <p class="card-text">{{ item.toauction.description }}</p>
+                    <a href="{% url 'view' item.toauction.title %}" class="btn btn-outline-dark">View</a>
+
+                </div>
+
+            
+            </div>
+
+        {% endfor %}
+    </div>
+
+{% endblock %}

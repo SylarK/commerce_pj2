@@ -50,14 +50,15 @@ body {
 
 }
 
-
-/* ID */
-
-#form_bid{
+.form_bid{
 
     margin: 2vh;
 
 }
+
+/* ID */
+
+
 
 #current_bid{
     margin-top: -2vh;
@@ -89,3 +90,8 @@ body {
     font-weight: bold;
 }
 
+#alert-danger{
+
+    margin: 2vh;
+
+}

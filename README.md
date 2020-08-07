@@ -14,7 +14,7 @@ Este projeto teve por objetivo a composição da nota no curso proposto pela Har
 
 * [x] **Listing Page**: Clicando em determinado item o usuário deverá ser direcionado a uma página em que o mesmo visualizará o item em específico. Nessa página os usuários são capazes de visualizar todos os detalhes do item, incluindo o preço atual do item.
 
-    * [ ] Se o usuário estiver logado, será capaz de adicionar o item ao Watchlist. Se o item já estiver lá ele poderá remove-lo.
+    * [x] Se o usuário estiver logado, será capaz de adicionar o item ao Watchlist. Se o item já estiver lá ele poderá remove-lo.
 
     * [x] Se o usuário estiver logado, poderá ser capaz de realizar um lance (que deverá ser maior do que o valor atual)
 
@@ -24,11 +24,11 @@ Este projeto teve por objetivo a composição da nota no curso proposto pela Har
 
     * [x] Usuários que estão logados deverão ser capazes de realizar comentários, e os comentários deverão estar listados no decorrer da página.
 
-* [ ] **Watchlist**: Usuários que estão logados são capazes de visitar a página de Watchlist que mostrará todos os itens que o usuário adicionou em sua página. Clicando em uma dessas o usuário será redirecionado a esta página.
+* [x] **Watchlist**: Usuários que estão logados são capazes de visitar a página de Watchlist que mostrará todos os itens que o usuário adicionou em sua página. Clicando em uma dessas o usuário será redirecionado a esta página.
 
 * [ ] **Categorias**: Usuários serão capazes de visitar uma página que listará todas as categorias. Clicando no nome da categoria será mostrado todos os itens de leilão ativos daquela categoria.
 
-* [ ] **Django Admin Interface**: Através do Django Admin Interface, o administrador do site deverá ser capaz de visualizar, editar e deletar qualquer 'listings, comments, and bids' feitos no site.
+* [x] **Django Admin Interface**: Através do Django Admin Interface, o administrador do site deverá ser capaz de visualizar, editar e deletar qualquer 'listings, comments, and bids' feitos no site.
 
 
 ##### Content (English): 
