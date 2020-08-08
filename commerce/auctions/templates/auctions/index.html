@@ -11,6 +11,12 @@
 
     {% if list_view %}
 
+        {% if request.user.alert == 1 %}
+
+            <h1>Winner</h1>
+
+        {% endif %}
+
         <div class="flex-container" id="flex_container">
             {% for item in list_view %}
 

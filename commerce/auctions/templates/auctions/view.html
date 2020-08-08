@@ -11,10 +11,20 @@
 
             <!-- msg -->
             <div class="overlay-content">
+                <!-- check if the user is the winner -->
+                {% if auction.winner == request.user %}
+                <div class="alert alert-success" role="alert">
+                    <span><img src="../../static/img/trophy.svg" class="img-winner"></span>
+                    Congratulations! You were the winner of the auction, please contact the owner of the ad.
+                    <span><img src="../../static/img/trophy.svg" class="img-winner"></span>
+                    <p><a href="{% url 'index' %}"><button class="btn btn-outline-dark">Return</button></a></p>
+                </div>
+                {% else %}
                 <div class="alert alert-warning" role="alert">
                     This auction was closed by its creator. Click the button below to return to the home screen.
                     <p><a href="{% url 'return' auction.title %}"><button class="btn btn-dark">Home</button></a></p>
                 </div>
+                {% endif %}
             </div>
 
         </div>

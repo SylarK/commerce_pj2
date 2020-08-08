@@ -18,7 +18,7 @@ Este projeto teve por objetivo a composição da nota no curso proposto pela Har
 
     * [x] Se o usuário estiver logado, poderá ser capaz de realizar um lance (que deverá ser maior do que o valor atual)
 
-    * [ ] Se o usuário estiver logado e for o criador do leilão daquele item, poderá realizar o fechamento do leilão, declarando o último lance como ganhador e deixando aquele item indisponível para outras visualizações.
+    * [x] Se o usuário estiver logado e for o criador do leilão daquele item, poderá realizar o fechamento do leilão, declarando o último lance como ganhador e deixando aquele item indisponível para outras visualizações.
 
     * [ ] Se o usuário vencedor do item específico do leilão for o ganhador e acessar a página, a página deverá notifica-lo.
 

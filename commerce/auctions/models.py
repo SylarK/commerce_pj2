@@ -3,6 +3,13 @@ from django.db import models
 from django.conf import settings
 
 class User(AbstractUser):
+    
+    class Alert(models.IntegerChoices):
+        YES = 1
+        NO = 0
+    
+    alert = models.IntegerField(choices=Alert.choices, default=0)
+
     pass
 
 class Auction(models.Model):
@@ -29,7 +36,7 @@ class Auction(models.Model):
     winner = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True, related_name='winner')
 
     def __str__(self):
-        return f"{self.title}, Init value: {self.init}, Cat: {self.cat}"
+        return f"{self.title}"
 
 class Bid(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
@@ -55,5 +62,7 @@ class WatchList(models.Model):
     def __str__(self):
         return f"{self.user} - {self.toauction}"
     
+class ResultAuction(models.Model):
 
-    
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    toauction = models.ForeignKey(Auction, on_delete=models.CASCADE)
