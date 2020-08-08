@@ -106,6 +106,7 @@ def view_auction(request, item_title):
                 auction_view.init = bid
                 auction_view.save()
                 newbid.save()
+
             else:
                 msg = 'Your bid must be greater than a current bid.'
 
@@ -154,5 +155,12 @@ def close(request, item_title):
     alt = Auction.objects.get(title=item_title)
     alt.status = 0
     alt.save()
+
+    return redirect('index')
+
+def return_home(request, item_title):
+
+    auction_view = Auction.objects.get(title=item_title)
+    watch = WatchList.objects.get(user=request.user, toauction=auction_view).delete()
 
     return redirect('index')

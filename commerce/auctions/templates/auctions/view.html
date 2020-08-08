@@ -5,128 +5,143 @@
 {% block header %} View {% endblock %}
 
 {% block body %} 
+    {% if auction.status == 0 %}
 
-    <div class="card-mb-5 view_card">
-    
-        <div class="row no-gutters">
+        <div id="block-content" class="overlay">
 
-            <div class="col-md-7">
-                <img src="{{ auction.url }}" class="card-img" alt="img">
+            <!-- msg -->
+            <div class="overlay-content">
+                <div class="alert alert-warning" role="alert">
+                    This auction was closed by its creator. Click the button below to return to the home screen.
+                    <p><a href="{% url 'return' auction.title %}"><button class="btn btn-dark">Home</button></a></p>
+                </div>
             </div>
-            <div class="col-md-5">
-                <div class="card-body">
-                    <h5 class="card-title">{{ auction.title }}</h5>
-                    <p class="card-text">{{ auction.description }}</p>
-                    <p class="card-text"><small class="text-muted">{{ auction.detail }}</small></p>
+
+        </div>
+
+    {% else %}
+
+        <div class="card-mb-5 view_card">
+        
+            <div class="row no-gutters">
+
+                <div class="col-md-7">
+                    <img src="{{ auction.url }}" class="card-img" alt="img">
                 </div>
-                <div class="form_bid">
-                    <p><small class="text-muted"><h5>Current Bid</h5></small> </p>
-                        <p id="current_bid">${{ auction.init }}</p>
-                </div>
-                {% if user.is_authenticated %}
-                        <!--Form Bid-->
-                        <div class="form_bid">
-                            <form class="form-inline" action="" method="post">
+                <div class="col-md-5">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ auction.title }}</h5>
+                        <p class="card-text">{{ auction.description }}</p>
+                        <p class="card-text"><small class="text-muted">{{ auction.detail }}</small></p>
+                    </div>
+                    <div class="form_bid">
+                        <p><small class="text-muted"><h5>Current Bid</h5></small> </p>
+                            <p id="current_bid">${{ auction.init }}</p>
+                    </div>
+                    {% if user.is_authenticated %}
+                            <!--Form Bid-->
+                            <div class="form_bid">
+                                <form class="form-inline" action="" method="post">
 
-                                {% csrf_token %}
+                                    {% csrf_token %}
 
-                                <div class="form-group mx-sm-3 mb-2">
-                                    <input type="hidden" value="bid" name="type-form">
-                                    <input type="number" class="form-control" name="newbid" placeholder="$" required> 
-                                </div>
-                                <button type="submit" class="btn btn-success mb-2" {% if user.is_anonymous %} disabled {% endif %} >Register to Bid</button>
-
-                                    {% if msg != '' %}
-                                        <div class="alert alert-danger" role="alert">
-                                            {{ msg }}
-                                        </div>
-                                    {% endif %}
-
-                            </form>
-                        </div>
-                        <!-- end Form bid-->
-
-                        <!-- watchlist -->
-                            <div class="watchlist_space">
-
-                                    <div id="watchlist_img">
-
-                                        {% if watchlist %}
-                                            <a class="link-watch" href="{% url 'manwatchlist' auction.title %}"><img src="../../static/img/star_after.svg" alt="">
-                                                    <span>Added to watchlist</span>
-                                            </a>
-                                        {% else %}
-                                            <a class="link-watch" href="{% url 'manwatchlist' auction.title %}"><img src="../../static/img/star_before.svg" alt="">
-                                                <span>Add to watchlist</span>
-                                            </a>
-                                        {% endif %}
-                                        {% if request.user == auction.user %}
-                                            <a class="link-watch" href="{% url 'close' auction.title %}"><img src="../../static/img/close_after.svg" alt="">
-                                                <span>Close bid</span>
-                                            </a>                                           
-                                        {% endif %}
-
+                                    <div class="form-group mx-sm-3 mb-2">
+                                        <input type="hidden" value="bid" name="type-form">
+                                        <input type="number" class="form-control" name="newbid" placeholder="$" required> 
                                     </div>
+                                    <button type="submit" class="btn btn-success mb-2" {% if user.is_anonymous %} disabled {% endif %} >Register to Bid</button>
 
+                                        {% if msg != '' %}
+                                            <div class="alert alert-danger" role="alert">
+                                                {{ msg }}
+                                            </div>
+                                        {% endif %}
+
+                                </form>
                             </div>
-                <!-- end watchlist -->
-                {% else %}
-                        
-                    <div class="alert alert-danger" id="alert-danger" role="alert">
-                        
-                        You must be logged in to place bids on the auction or make comments.
+                            <!-- end Form bid-->
 
+                            <!-- watchlist -->
+                                <div class="watchlist_space">
+
+                                        <div id="watchlist_img">
+
+                                            {% if watchlist %}
+                                                <a class="link-watch" href="{% url 'manwatchlist' auction.title %}"><img src="../../static/img/star_after.svg" alt="">
+                                                        <span>Added to watchlist</span>
+                                                </a>
+                                            {% else %}
+                                                <a class="link-watch" href="{% url 'manwatchlist' auction.title %}"><img src="../../static/img/star_before.svg" alt="">
+                                                    <span>Add to watchlist</span>
+                                                </a>
+                                            {% endif %}
+                                            {% if request.user == auction.user %}
+                                                <a class="link-watch" href="{% url 'close' auction.title %}"><img src="../../static/img/close_after.svg" alt="">
+                                                    <span>Close bid</span>
+                                                </a>                                           
+                                            {% endif %}
+
+                                        </div>
+
+                                </div>
+                    <!-- end watchlist -->
+                    {% else %}
+                            
+                        <div class="alert alert-danger" id="alert-danger" role="alert">
+                            
+                            You must be logged in to place bids on the auction or make comments.
+
+                        </div>
+
+                    {% endif %}
+                </div>
+
+            </div>
+
+            <div class="content_comments">
+
+                <ul class="list-group list_comment">
+
+                    {% if comments %}
+                        {% for com in comments %}
+
+                            <li class="list-group-item">
+                                <span style="font-weight: bold;">{{ com.user }}</span> - <span style="opacity: 0.6;">Created at {{ com.created_at }}</span>
+                            </li>
+                            <li class="list-group-item">{{ com.text }}</li>
+
+                        {% endfor %}
+                    {% else %}
+                        
+                        <li class="list-group-item text-muted" id="empty_comment">
+                            We don't have any comments for this work yet.
+                        </li>
+                        
+                    {% endif %}
+                </ul>
+
+            </div>
+
+            {% if user.is_authenticated %}
+                <!-- Form comment -->
+                <form class="form_comment" action="" method="post">
+
+                    {% csrf_token %}
+
+                    <input type="hidden" value="comment" name="type-form">
+                    <div class="form-group">
+                        <textarea name="comment" rows="5" class="form-control"></textarea>
                     </div>
 
-                {% endif %}
-            </div>
+                    <button class="btn btn-outline-dark btn-sm" type="submit">Comment</button>
 
-        </div>
+                </form>
+                <!-- end Form comment -->
+            {% endif %}
 
-        <div class="content_comments">
+        </div> 
+    {% endif %}
 
-            <ul class="list-group list_comment">
 
-                {% if comments %}
-                    {% for com in comments %}
-
-                        <li class="list-group-item">
-                            <span style="font-weight: bold;">{{ com.user }}</span> - <span style="opacity: 0.6;">Created at {{ com.created_at }}</span>
-                        </li>
-                        <li class="list-group-item">{{ com.text }}</li>
-
-                    {% endfor %}
-                {% else %}
-                    
-                    <li class="list-group-item text-muted" id="empty_comment">
-                        We don't have any comments for this work yet.
-                    </li>
-                    
-                {% endif %}
-            </ul>
-
-        </div>
-
-        {% if user.is_authenticated %}
-            <!-- Form comment -->
-            <form class="form_comment" action="" method="post">
-
-                {% csrf_token %}
-
-                <input type="hidden" value="comment" name="type-form">
-                <div class="form-group">
-                    <textarea name="comment" rows="5" class="form-control"></textarea>
-                </div>
-
-                <button class="btn btn-outline-dark btn-sm" type="submit">Comment</button>
-
-            </form>
-            <!-- end Form comment -->
-        {% endif %}
-
-    
-    </div> 
-
-    <script src="../../static/auctions/main.js"></script>
 
 {% endblock %}

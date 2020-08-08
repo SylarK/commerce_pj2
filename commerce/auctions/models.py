@@ -18,7 +18,7 @@ class Auction(models.Model):
         OFF = 0
         ON = 1
 
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='owner')
     title = models.CharField(max_length=100)
     description = models.TextField()
     detail = models.TextField()
@@ -26,6 +26,7 @@ class Auction(models.Model):
     url = models.CharField(max_length=1000, blank=True)
     cat = models.IntegerField(choices=CategorieOptions.choices, default=1)
     status = models.IntegerField(choices=StatusOptions.choices, default=1)
+    winner = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True, related_name='winner')
 
     def __str__(self):
         return f"{self.title}, Init value: {self.init}, Cat: {self.cat}"
