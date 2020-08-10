@@ -13,7 +13,24 @@
 
         {% if request.user.alert == 1 %}
 
-            <h1>Winner</h1>
+            <div id="block-content" class="overlay">
+
+                <div class="overlay-content" id="overlay-index">
+            
+                    <div class="card" style="width: 18rem;">
+                        <div class="card-body">
+
+                            <h3>Congratulations! <img src="../../static/img/congratulation.svg" class="img-winner"></h3>
+                            <p class="card-text">You were the winner of an auction! Click here on the button below to check it out.</p>
+                            <a href="{% url 'result' %}" class="btn btn-warning">Go</a>
+
+                        </div>
+                    
+                    </div>
+
+                </div>
+
+            </div>
 
         {% endif %}
 

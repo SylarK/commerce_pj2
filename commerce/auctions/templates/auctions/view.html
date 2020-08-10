@@ -15,9 +15,11 @@
                 {% if auction.winner == request.user %}
                 <div class="alert alert-success" role="alert">
                     <span><img src="../../static/img/trophy.svg" class="img-winner"></span>
-                    Congratulations! You were the winner of the auction, please contact the owner of the ad.
+                    Congratulations! 
                     <span><img src="../../static/img/trophy.svg" class="img-winner"></span>
-                    <p><a href="{% url 'index' %}"><button class="btn btn-outline-dark">Return</button></a></p>
+                    <p>You were the winner of this auction!</p> Click here on the button below to check it out.
+                    
+                    <p><a href="{% url 'result' %}"><button class="btn btn-outline-dark">Go</button></a></p>
                 </div>
                 {% else %}
                 <div class="alert alert-warning" role="alert">

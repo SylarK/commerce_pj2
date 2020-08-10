@@ -66,3 +66,6 @@ class ResultAuction(models.Model):
 
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     toauction = models.ForeignKey(Auction, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f"{self.user.username} - {self.toauction.title}"

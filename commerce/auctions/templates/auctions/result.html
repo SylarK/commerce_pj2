@@ -1,0 +1,48 @@
+{% extends 'auctions/layout.html' %}
+
+{% block title %}Record{% endblock %}
+
+{% block header %}Results{% endblock %}
+
+{% block body %}
+
+    {% if results %}
+        <table class="table">
+
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Title</th>
+                    <th scope="col">Owner</th>
+                    <th scope="col">Sold</th>
+                    <th scope="col">Winner</th>
+
+                </tr>
+            </thead>
+            <tbody>
+
+                {% for value in results %}
+                    <tr>
+                        <th scope='row'>{{ value.toauction.title }}</th>
+                        <td>{{ value.toauction.user }}</td>
+                        <td>{{ value.toauction.init }}</td>
+                        <td>{{ value.toauction.winner }}</td> 
+                    </tr>
+                {% endfor %}
+
+            </tbody>
+
+        </table>
+
+        <div class="alert alert-secondary alert-result" role="alert">
+            Please contact the auction owner.
+        </div>
+    {% else %}
+
+        <div class="alert alert-warning" role="alert">
+            You have not yet made any purchases in the auction.
+        </div>
+    
+    {% endif %}
+
+
+{% endblock %}

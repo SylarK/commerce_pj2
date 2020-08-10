@@ -178,3 +178,15 @@ def return_home(request, item_title):
     watch = WatchList.objects.get(user=request.user, toauction=auction_view).delete()
 
     return redirect('index')
+
+def result(request):
+
+    if request.user.alert == 1:
+        request.user.alert = 0
+        request.user.save()
+
+    results = ResultAuction.objects.filter(user=request.user)
+
+    return render(request, 'auctions/result.html',{
+        'results':results
+    })
