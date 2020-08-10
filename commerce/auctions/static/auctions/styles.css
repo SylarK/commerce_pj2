@@ -124,6 +124,12 @@ body {
     width: 100%;
 
 }
+
+.card-price{
+    font-weight: bold;
+    text-shadow: 1px 1px solid black;
+}
+
 /* ID */
 
 

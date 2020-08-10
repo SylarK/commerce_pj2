@@ -63,6 +63,7 @@
                         <div class="card-body">
                             
                             <p class="card-text">{{ item.description }}</p>
+                            <p class="card-price" style="text-align: center;">$ {{ item.init }}</p>
                             <a href="{% url 'view' item.title %}" class="btn btn-outline-dark">View</a>
 
                         </div>
