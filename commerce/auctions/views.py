@@ -190,3 +190,11 @@ def result(request):
     return render(request, 'auctions/result.html',{
         'results':results
     })
+
+def filtered(request, categorie):
+
+    list_filtered = Auction.objects.filter(cat=categorie)
+
+    return render(request, 'auctions/filter.html', {
+        'list_filtered':list_filtered
+    })

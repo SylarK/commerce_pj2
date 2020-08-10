@@ -9,6 +9,25 @@
 {% block body %}
     <h2>Active Listings</h2>
 
+    <div class="space-filter">
+        <div class="filter-index">
+
+            <div class="dropdown">
+                <button class="btn btn-outline-dark dropdown-toggle" type="button" data-toggle="dropdown">
+                    Filter 
+                    <img src="../../static/img/filter.svg">
+                </button>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="{% url 'filtered' 2 %}">Surrealism</a></li>
+                  <li><a class="dropdown-item" href="{% url 'filtered' 3 %}">Pop Art</a></li>
+                  <li><a class="dropdown-item" href="{% url 'filtered' 4 %}">Minimalism</a></li>
+                  <li><a class="dropdown-item" href="{% url 'filtered' 5 %}">Street Art</a></li>
+                </ul>
+              </div>
+        
+        </div>
+    </div>
+    
     {% if list_view %}
 
         {% if request.user.alert == 1 %}

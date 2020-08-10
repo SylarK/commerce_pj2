@@ -1,0 +1,29 @@
+{% extends 'auctions/layout.html' %}
+
+{% block title %}Filter{% endblock %}
+
+{% block header %}Filter{% endblock %}
+
+{% block body %}
+
+    <div class="flex-container" id="flex_container">
+        {% for item in list_filtered %}
+
+            {% if item.status == 1 %}
+                <div class="card" style="width: 15rem;">
+                    <h5 class="card-title">{{ item.title }}</h5>
+                    <img src="{{ item.url }}" class="card-img" alt="...">
+                    <div class="card-body">
+                        
+                        <p class="card-text">{{ item.description }}</p>
+                        <a href="{% url 'view' item.title %}" class="btn btn-outline-dark">View</a>
+
+                    </div>
+
+                </div>
+            {% endif %}
+
+        {% endfor %}
+    </div>
+
+{% endblock %}

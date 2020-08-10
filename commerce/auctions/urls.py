@@ -13,5 +13,6 @@ urlpatterns = [
     path("view_watchlist", views.view_watchlist, name='view_watchlist'),
     path("close/<str:item_title>", views.close, name='close'),
     path("return/<str:item_title>", views.return_home, name='return'),
-    path("result", views.result, name='result')
+    path("result", views.result, name='result'),
+    path("filtered/<int:categorie>", views.filtered, name='filtered')
 ]
