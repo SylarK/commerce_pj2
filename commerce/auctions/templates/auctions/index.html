@@ -14,10 +14,11 @@
 
             <div class="dropdown">
                 <button class="btn btn-outline-dark dropdown-toggle" type="button" data-toggle="dropdown">
-                    Filter 
+                    Categories
                     <img src="../../static/img/filter.svg">
                 </button>
                 <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="{% url 'index' %}">All</a></li>
                   <li><a class="dropdown-item" href="{% url 'filtered' 2 %}">Surrealism</a></li>
                   <li><a class="dropdown-item" href="{% url 'filtered' 3 %}">Pop Art</a></li>
                   <li><a class="dropdown-item" href="{% url 'filtered' 4 %}">Minimalism</a></li>
@@ -59,7 +60,11 @@
                 {% if item.status == 1 %}
                     <div class="card" style="width: 15rem;">
                         <h5 class="card-title">{{ item.title }}</h5>
-                        <img src="{{ item.url }}" class="card-img" alt="...">
+                        {% if item.url == '' %}
+                            <img src="../../static/img/default-img.png" class="card-img" alt="...">
+                        {% else %}
+                            <img src="{{ item.url }}" class="card-img" alt="...">
+                        {% endif %}
                         <div class="card-body">
                             
                             <p class="card-text">{{ item.description }}</p>
