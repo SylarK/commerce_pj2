@@ -20,13 +20,13 @@ Este projeto teve por objetivo a composição da nota no curso proposto pela Har
 
     * [x] Se o usuário estiver logado e for o criador do leilão daquele item, poderá realizar o fechamento do leilão, declarando o último lance como ganhador e deixando aquele item indisponível para outras visualizações.
 
-    * [ ] Se o usuário vencedor do item específico do leilão for o ganhador e acessar a página, a página deverá notifica-lo.
+    * [x] Se o usuário vencedor do item específico do leilão for o ganhador e acessar a página, a página deverá notifica-lo.
 
     * [x] Usuários que estão logados deverão ser capazes de realizar comentários, e os comentários deverão estar listados no decorrer da página.
 
 * [x] **Watchlist**: Usuários que estão logados são capazes de visitar a página de Watchlist que mostrará todos os itens que o usuário adicionou em sua página. Clicando em uma dessas o usuário será redirecionado a esta página.
 
-* [ ] **Categorias**: Usuários serão capazes de visitar uma página que listará todas as categorias. Clicando no nome da categoria será mostrado todos os itens de leilão ativos daquela categoria.
+* [x] **Categorias**: Usuários serão capazes de visitar uma página que listará todas as categorias. Clicando no nome da categoria será mostrado todos os itens de leilão ativos daquela categoria.
 
 * [x] **Django Admin Interface**: Através do Django Admin Interface, o administrador do site deverá ser capaz de visualizar, editar e deletar qualquer 'listings, comments, and bids' feitos no site.
 
